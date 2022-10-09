@@ -1,4 +1,4 @@
-import { Box, Button, Input } from '@chakra-ui/react'
+import { Box, Button, Input, Text } from '@chakra-ui/react'
 import { useState } from 'react'
 import { useSWRConfig } from 'swr'
 import { Cancel, Delete, Update } from '../../ui/Icons'
@@ -51,7 +51,7 @@ const GalleryImage = ({ item }: { item: GalleryResponse }) => {
           }}
         />
       </Box>
-      <p>{item.data.description}</p>
+      <Text fontSize='2xl'>{item.data.description}</Text>
 
       <Box display='flex' justifyContent='space-between' pt='3'>
         {updateMode ? (
@@ -60,6 +60,10 @@ const GalleryImage = ({ item }: { item: GalleryResponse }) => {
               <Input
                 placeholder='Uppdatera beskrivning'
                 value={updateDesc}
+                borderColor='black'
+                _placeholder={{
+                  color: 'black',
+                }}
                 onChange={(e) => setUpdateDesc(e.target.value)}
               />
               <Cancel click={() => setUpdateMode(false)} />

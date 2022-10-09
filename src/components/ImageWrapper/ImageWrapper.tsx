@@ -57,7 +57,13 @@ const ImageWrapper = ({
       >
         <Plus click={handleClick} />
         <Input
-          placeholder='beskrivning'
+          placeholder='Lägg till en beskrivning'
+          borderColor='black'
+          px='1'
+          _placeholder={{
+            color: 'black',
+            fontSize: 'x-small',
+          }}
           onChange={(e) => setDescription(e.target.value)}
         />
       </Box>

@@ -39,7 +39,7 @@ const RandomPhotos = () => {
   if (!data) return <Spinner size='xl' />
   return (
     <Container maxW='none'>
-      <Heading>Välj bilder till ditt galleri</Heading>
+      <Heading fontFamily='monospace'>Välj bilder</Heading>
       <Box py='10'>
         <Grid
           templateColumns={{

@@ -4,7 +4,7 @@ import RandomPhotos from './components/RandomPhotos/RandomPhotos'
 
 const App = () => {
   return (
-    <Box as='main'>
+    <Box as='main' fontFamily='monospace'>
       <Box as='section' py='10'>
         <Container maxW='none'>
           <Box

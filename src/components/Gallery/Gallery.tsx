@@ -19,7 +19,7 @@ const Gallery = () => {
       }}
       w='100%'
     >
-      <Heading>Ditt galleri</Heading>
+      <Heading fontFamily='monospace'>Ditt galleri</Heading>
       <Grid
         templateColumns={{
           base: '1fr',
