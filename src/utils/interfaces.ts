@@ -1,11 +1,18 @@
-import { ReactNode } from 'react'
-import { VeryBasic } from 'unsplash-js/dist/methods/photos/types'
-
-export interface Wrapper {
-  children: ReactNode | ReactNode[]
+export interface PayLoad {
+  img: UnsplashPhoto
+  description: string
 }
 
-export interface PayLoad {
-  img: VeryBasic
-  description: string
+export interface GalleryResponse {
+  _id: string
+  data: PayLoad
+}
+
+export interface UnsplashPhoto {
+  id: string
+  width: number
+  height: number
+  urls: {
+    small: string
+  }
 }

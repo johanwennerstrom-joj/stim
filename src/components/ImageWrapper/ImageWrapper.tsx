@@ -4,15 +4,23 @@ import { useSWRConfig } from 'swr'
 import { VeryBasic } from 'unsplash-js/dist/methods/photos/types'
 import { Plus } from '../../ui/Icons'
 import { postNew } from '../../utils/fetchers'
+import { UnsplashPhoto } from '../../utils/interfaces'
 import Image from '../Image/Image'
 
-const ImageWrapper = ({ img }: { img: VeryBasic }) => {
+const ImageWrapper = ({
+  img,
+  callback,
+}: {
+  img: UnsplashPhoto
+  callback: (id: string) => void
+}) => {
   const [description, setDescription] = useState('')
 
   const { mutate } = useSWRConfig()
   const handleClick = async () => {
     await postNew({ img: img, description: description })
     mutate('/all')
+    callback(img.id)
   }
 
   return (
@@ -25,9 +33,9 @@ const ImageWrapper = ({ img }: { img: VeryBasic }) => {
       >
         <Image
           alt=''
-          height={1000}
+          height={153}
+          width={272}
           src={img.urls.small}
-          width={600}
           style={{
             position: 'absolute',
             top: '0px',
@@ -41,7 +49,8 @@ const ImageWrapper = ({ img }: { img: VeryBasic }) => {
       </Box>
       <Box
         pt='10px'
-        display='inline-flex'
+        display='flex'
+        justifyContent='space-between'
         alignItems='center'
         gap='5px'
         cursor='pointer'

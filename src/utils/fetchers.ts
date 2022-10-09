@@ -1,12 +1,8 @@
 import axios, { AxiosResponse } from 'axios'
-import { ApiResponse } from 'unsplash-js/dist/helpers/response'
-import { Random } from 'unsplash-js/dist/methods/photos/types'
-import { Basic } from 'unsplash-js/dist/methods/users/types'
 import { BASE_URL } from './consts'
-import { unsplashClient } from './generalUtils'
-import { PayLoad } from './interfaces'
+import { GalleryResponse, PayLoad, UnsplashPhoto } from './interfaces'
 
-export const getGallery = async () => {
+export const getGallery = async (): Promise<GalleryResponse[]> => {
   const res = await axios.get(`${BASE_URL}/gallery`)
 
   return res.data
@@ -24,16 +20,22 @@ export const postNew = async (payload: PayLoad) => {
   }
 }
 
-export const getPhotosRandom = async () => {
-  const res = await unsplashClient.photos.getRandom({ count: 10 })
-  return res
+export const getPhotosRandom = async (): Promise<UnsplashPhoto[]> => {
+  const res = await axios.get(
+    'https://api.unsplash.com/photos/random/?count=10',
+    {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Client-ID ${import.meta.env.VITE_UNSPLASH_KEY}`,
+      },
+    }
+  )
+  return res.data
 }
 
-export const updateDescription = async (id: string, payload: PayLoad) => {
+export const updateDescription = async (id: string, item: PayLoad) => {
   const res = await axios.put(`${BASE_URL}/gallery/${id}`, {
-    data: {
-      data: payload,
-    },
+    data: item,
   })
   return res
 }

@@ -1,17 +1,24 @@
 import { Box, Container } from '@chakra-ui/react'
-import Intro from './components/Intro/Intro'
-import PhotoGrid from './components/PhotoGrid/PhotoGrid'
-import Section from './components/Section/Section'
+import Gallery from './components/Gallery/Gallery'
+import RandomPhotos from './components/RandomPhotos/RandomPhotos'
 
 const App = () => {
   return (
     <Box as='main'>
-      <Section>
+      <Box as='section' py='10'>
         <Container maxW='none'>
-          <Intro />
-          <PhotoGrid />
+          <Box
+            display='grid'
+            gridTemplateColumns={{
+              base: '1fr 1fr',
+              md: '1fr 1fr 1fr',
+            }}
+          >
+            <RandomPhotos />
+            <Gallery />
+          </Box>
         </Container>
-      </Section>
+      </Box>
     </Box>
   )
 }
