@@ -6,6 +6,8 @@ import {
   Heading,
   Button,
   Box,
+  Alert,
+  AlertIcon,
 } from '@chakra-ui/react'
 import { useEffect, useState } from 'react'
 import useSWR, { useSWRConfig } from 'swr'
@@ -35,7 +37,15 @@ const RandomPhotos = () => {
     }
   }
 
-  if (error) return null
+  if (error)
+    return (
+      <Box>
+        <Alert status='error'>
+          <AlertIcon />
+          Något gick fel
+        </Alert>
+      </Box>
+    )
   if (!data) return <Spinner size='xl' />
   return (
     <Container maxW='none'>

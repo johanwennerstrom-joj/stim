@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  app:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    command: npm run dev
+    ports:
+      - '3000:3000'
+    volumes:
+      - ./:/usr/src/app
+      - /usr/src/app/node_modules
+
+    image: stim:latest
+    env_file:
+      - .env

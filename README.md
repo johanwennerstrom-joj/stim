@@ -15,17 +15,17 @@ Uses:
 ## Installation
 
 ```sh
-yarn
+npm install
 ```
 
 ## Dev
 
 ```sh
-yarn dev
+npm run dev
 ```
 
 ## Build
 
 ```sh
-yarn build
+npm run build
 ```

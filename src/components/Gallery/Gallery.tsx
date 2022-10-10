@@ -1,4 +1,12 @@
-import { Box, Grid, Heading, Spinner, Text } from '@chakra-ui/react'
+import {
+  Alert,
+  AlertIcon,
+  Box,
+  Grid,
+  Heading,
+  Spinner,
+  Text,
+} from '@chakra-ui/react'
 
 import useSWR from 'swr'
 import { getGallery } from '../../utils/fetchers'
@@ -10,7 +18,15 @@ const Gallery = () => {
   })
 
   if (!data) return <Spinner size='xl' />
-  if (error) return <Text>Något gick fel...</Text>
+
+  if (error)
+    return (
+      <Box>
+        <Alert status='error'>
+          <AlertIcon /> Något gick fel
+        </Alert>
+      </Box>
+    )
 
   return (
     <Box

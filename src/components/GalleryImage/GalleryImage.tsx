@@ -1,4 +1,4 @@
-import { Box, Button, Input, Text } from '@chakra-ui/react'
+import { Box, Button, Fade, Input, Text } from '@chakra-ui/react'
 import { useState } from 'react'
 import { useSWRConfig } from 'swr'
 import { Cancel, Delete, Update } from '../../ui/Icons'
@@ -71,7 +71,17 @@ const GalleryImage = ({ item }: { item: GalleryResponse }) => {
             <Button onClick={handleUpdate}>Uppdatera beskrivning</Button>
           </Box>
         ) : (
-          <Update click={() => setUpdateMode(true)} />
+          <Box
+            willChange='transform'
+            sx={{
+              transition: 'ease 0.4s',
+            }}
+            _hover={{
+              transform: 'rotate(45deg)',
+            }}
+          >
+            <Update click={() => setUpdateMode(true)} />
+          </Box>
         )}
         <DeleteButton handler={handleDelete} />
       </Box>
