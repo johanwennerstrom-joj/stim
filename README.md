@@ -35,7 +35,13 @@ npm run dev
 npm run build
 ```
 
-## Docker build (docker only runs production build. Not dev)
+## Serve
+
+```sh
+npm run serve
+```
+
+## Docker build (docker only runs production build. Not dev. Still requires to be built after adding .env file to root)
 
 ```sh
 docker build -t usr/name .
